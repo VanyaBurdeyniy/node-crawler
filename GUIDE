@@ -23,3 +23,14 @@ Guide for Linux:
 3. From project directory type 'node scrappy.js http://somesite.com' in terminal
     (Example: 'node scrappy.js https://www.youmagine.com/designs/lampe')
 4. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
+
+
+----------------------------------
+
+Simple usage:
+
+If you want to get all images and links you can type:
+"node scrapy.js https://www.youmagine.com/designs/" or "node scrapy.js http://www.thingiverse.com/thing"
+
+Or if you want to get images and from specific pages you can type:
+"node scrapy.js https://www.youmagine.com/designs/ 1(page from which to start) 10(page on which the complete)" or "node scrapy.js http://www.thingiverse.com/thing 1(page from which to start) 10(page on which the complete)"
