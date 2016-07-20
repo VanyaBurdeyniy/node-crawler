@@ -1,0 +1,18 @@
+{
+  "name": "scrappy-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scrappy.js",
+  "scripts": {
+    "test": "node scrapy.js http://site.com"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crawler": "^0.4.3",
+    "edit-google-spreadsheet": "^0.2.21",
+    "express": "^4.14.0",
+    "jsdom": "^9.4.1",
+    "url": "^0.11.0"
+  }
+}

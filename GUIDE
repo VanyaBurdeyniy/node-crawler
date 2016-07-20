@@ -1,0 +1,25 @@
+Requirements:
+1. Node.js
+2. npm (node package manager)
+
+---------------------------------
+
+Install Node.js
+    Windows: https://nodejs.org/en/download/
+    Linux: https://nodejs.org/en/download/package-manager/
+
+---------------------------------
+
+Guide for Windows:
+1. Run cmd
+2. Go to your project from command line (Example: 'cd D:\Projects\scrappy-demo') and press enter
+3. From project directory type 'node scrappy.js http://somesite.com' in command line
+    (Example: 'node scrappy.js https://www.youmagine.com/designs/lampe')
+4. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
+
+Guide for Linux:
+1. Run cmd
+2. Go to your project from command line (Example: 'cd Projects/scrappy-demo') and press enter
+3. From project directory type 'node scrappy.js http://somesite.com' in terminal
+    (Example: 'node scrappy.js https://www.youmagine.com/designs/lampe')
+4. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
