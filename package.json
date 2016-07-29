@@ -4,15 +4,17 @@
   "description": "",
   "main": "scrappy.js",
   "scripts": {
-    "test": "node scrapy.js http://site.com"
+    "test": "node scrapy.js https://www.youmagine.com/designs/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "crawler": "^0.4.3",
     "edit-google-spreadsheet": "^0.2.21",
     "express": "^4.14.0",
     "jsdom": "^9.4.1",
+    "mongoose": "^4.5.7",
     "url": "^0.11.0"
   }
 }

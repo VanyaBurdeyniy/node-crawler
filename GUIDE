@@ -7,22 +7,34 @@ Requirements:
 Install Node.js
     Windows: https://nodejs.org/en/download/
     Linux: https://nodejs.org/en/download/package-manager/
+    
+    
+Install npm
+    Windows: If you have windows it must installing automatically after installing Node.js
+	- Go to: Control Panel -> System -> Advanced system settings -> Environment Variables
+	- Select PATH and choose to edit it.
+	- If the PATH variable is empty, change it to this: C:\{Node.js folder}\npm;C:\{Node.js folder}\nodejs
+	- If npm PATH is broken add C:\{Node.js folder}\npm;
+    
+    Linux: https://www.npmjs.com/package/npm (see paragraph "Fancy Install (Unix)")
 
 ---------------------------------
 
 Guide for Windows:
 1. Run cmd
 2. Go to your project from command line (Example: 'cd D:\Projects\scrappy-demo') and press enter
-3. From project directory type 'node scrappy.js http://somesite.com' in command line
+3. Type in command line "npm install" 
+4. From project directory type 'node scrappy.js http://somesite.com' in command line
     (Example: 'node scrappy.js https://www.youmagine.com/designs/lampe')
-4. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
+5. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
 
 Guide for Linux:
 1. Run cmd
 2. Go to your project from command line (Example: 'cd Projects/scrappy-demo') and press enter
-3. From project directory type 'node scrappy.js http://somesite.com' in terminal
+3. Type in command line "npm install"
+4. From project directory type 'node scrappy.js http://somesite.com' in terminal
     (Example: 'node scrappy.js https://www.youmagine.com/designs/lampe')
-4. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
+5. And see result in https://docs.google.com/spreadsheets/d/1s0dl-7vjKGrYjwaMBlD88uEJaAeVk0l2ttyszUKjTOU/edit#gid=0
 
 
 ----------------------------------
