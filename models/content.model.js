@@ -1,9 +1,9 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-let Contentchema = new Schema({
+var Contentchema = new Schema({
     imageUrl:String,
     title: String,
     description: String,
@@ -15,7 +15,7 @@ let Contentchema = new Schema({
     }
 });
 
-Contentchema.pre('save', next => {
+Contentchema.pre('save', function(next) {
     next();
 });
 
