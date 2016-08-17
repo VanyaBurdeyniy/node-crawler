@@ -1,5 +1,3 @@
-'use strict';
-
 var jsdom = require("jsdom");
 var Crawler = require("crawler");
 var url = require('url');
