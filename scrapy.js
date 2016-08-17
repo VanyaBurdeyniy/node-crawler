@@ -1,16 +1,16 @@
 'use strict';
 
-const jsdom = require("jsdom");
-const Crawler = require("crawler");
-const url = require('url');
-const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://localhost:27017/node-crawler');
+var jsdom = require("jsdom");
+var Crawler = require("crawler");
+var url = require('url');
+var mongoose = require('mongoose');
+var db = mongoose.connect('mongodb://localhost:27017/node-crawler');
 require('./models/content.model');
-const Content = mongoose.model('Content');
+var Content = mongoose.model('Content');
 
 if (!process.argv[2]) throw 'You must specify a web page!';
 
-let host = 'http://www.thingiverse.com',
+var host = 'http://www.thingiverse.com',
     link = process.argv[2],
     googleTablesData = [],
     allLinksToPages = [],
@@ -32,11 +32,11 @@ if (process.argv[3] && process.argv[4]) {
 if (link.match('thingiverse')) host = 'http://www.thingiverse.com';
 
 
-let c = new Crawler({
+var c = new Crawler({
     maxConnections : 10,
-    callback : (error, result, $) => {
-        $('a').each( (index, a) => {
-            let toQueueUrl = $(a).attr('href');
+    callback : function (error, result, $) {
+        $('a').each( function(index, a) {
+            var toQueueUrl = $(a).attr('href');
             c.queue(toQueueUrl);
         });
     }
@@ -54,13 +54,13 @@ function youMagineGetAll(url) {
     c.queue([{
         uri: url,
         jQuery: false,
-        callback: (error, result) => {
-            let isGettingContent = false;
+        callback: function(error, result) {
+            var isGettingContent = false;
             jsdom.env(
                 result.body,
                 ["./jquery.js"],
-                (err, window) => {
-                    window.$.each(window.$('#js-load-more').find('.tile').find('a'), (i, v) => {
+                function(err, window) {
+                    window.$.each(window.$('#js-load-more').find('.tile').find('a'), function(i, v) {
                         if (window.$(v).attr('href') !== '/users/sign_in' && window.$(v).attr('href').match('designs')) allLinksToPages.push(host + window.$(v).attr('href'));
                         isGettingContent = true;
                     });
@@ -96,7 +96,7 @@ function getContentFromYouMaginePage() {
     c.queue([{
         uri: allLinksToPages[count],
         jQuery: false,
-        callback: (error, result) => {
+        callback: function(error, result) {
 
             if (allLinksToPages.length == 0) {
                 if (isGetAllLinks) {
@@ -111,20 +111,20 @@ function getContentFromYouMaginePage() {
                 jsdom.env(
                     result.body,
                     ["./jquery.js"],
-                    (err, window) => {
-                        let documentId,
+                    function(err, window) {
+                        var documentId,
                             pageUrl = allLinksToPages[count],
                             description = window.$('#information').find('.description').text(),
                             title = window.$('.design-title').text();
 
-                        window.$.each(window.$("#documents").find('.document'), (i, v) => {
+                        window.$.each(window.$("#documents").find('.document'), function(i, v) {
                             if (window.$(v).find('.meta').find('.file-info').text().match('STL')) {
                                 if (documentId) { documentId = documentId + ', ' + host + window.$(v).find('.download').attr('href'); }
                                 else { documentId = host + window.$(v).find('.download').attr('href'); }
                             }
                         });
-                        window.$.each(window.$('#js-carousel').find('.images').find('.image'), (i, v) => {
-                            let src = window.$(v).css('background-image');
+                        window.$.each(window.$('#js-carousel').find('.images').find('.image'), function(i, v) {
+                            var src = window.$(v).css('background-image');
                             src = src.replace('"', '');
                             src = src.replace('url(', '');
                             src = src.replace(')', '');
@@ -177,13 +177,13 @@ function thingiVerseGetAll(url) {
     c.queue([{
         uri: url,
         jQuery: false,
-        callback: (error, result) => {
-            let isGettingContent = false;
+        callback: function(error, result) {
+            var isGettingContent = false;
             jsdom.env(
                 result.body,
                 ["./jquery.js"],
-                (err, window) => {
-                    window.$.each(window.$('.things-page').find('.thing-img-wrapper'), (i, v) => {
+                function(err, window) {
+                    window.$.each(window.$('.things-page').find('.thing-img-wrapper'), function(i, v) {
                         allLinksToPages.push(host + window.$(v).attr('href'));
                         isGettingContent = true;
                     });
@@ -219,7 +219,7 @@ function getContentFromThingiVersePage() {
     c.queue([{
         uri: allLinksToPages[count],
         jQuery: false,
-        callback: (error, result) => {
+        callback: function(error, result) {
 
             if (allLinksToPages.length == 0) {
                 if (isGetAllLinks) {
@@ -234,17 +234,17 @@ function getContentFromThingiVersePage() {
                 jsdom.env(
                     result.body,
                     ["./jquery.js"],
-                    (err, window) => {
-                        let documentId,
+                    function(err, window) {
+                        var documentId,
                             pageUrl = allLinksToPages[count],
                             description = window.$('.thing-component-header.summary').next().text(),
                             title = window.$('.thing-page-header').first().find('.thing-header-data').find('h1').text();
 
-                        window.$.each(window.$(".thing-file-download-link"), (i, v) => {
+                        window.$.each(window.$(".thing-file-download-link"), function(i, v) {
                             if (documentId) { documentId = documentId + ', ' + host + window.$(v).attr('href'); }
                             else { if (window.$(v).attr('data-file-name').match('STL') || window.$(v).attr('data-file-name').match('stl')) documentId = host + window.$(v).attr('href'); }
                         });
-                        window.$.each(window.$('.thing-gallery-thumb'), (i, v) => {
+                        window.$.each(window.$('.thing-gallery-thumb'), function(i, v) {
                             if (window.$(v).attr('data-large-url').match('jpg') || window.$(v).attr('data-large-url').match('JPG')) {
                                 googleTablesData.push({
                                     'imageUrl':window.$(v).attr('data-large-url'),
