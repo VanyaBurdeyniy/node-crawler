@@ -8,7 +8,7 @@ var Content = mongoose.model('Content');
 
 if (!process.argv[2]) throw 'You must specify a web page!';
 
-var host = 'http://www.thingiverse.com',
+var host = 'http://www.youmagine.com',
     link = process.argv[2],
     googleTablesData = [],
     allLinksToPages = [],
